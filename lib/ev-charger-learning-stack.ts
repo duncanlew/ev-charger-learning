@@ -10,19 +10,19 @@ export class EvChargerLearningStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const helloRust = new RustFunction(this, 'helloRust', {
-      manifestPath: './lambda/helloRust',
+    const availabilityFunction = new RustFunction(this, 'availabilityFunction', {
+      manifestPath: './lambda/availability',
       runtime: 'provided.al2023',
       timeout: cdk.Duration.seconds(30),
     });
 
-    const api = new HttpApi(this, 'rustyApi');
-    const helloInteg = new HttpLambdaIntegration('helloInteg', helloRust);
+    const api = new HttpApi(this, 'availabilityApi');
+    const availabilityInteg = new HttpLambdaIntegration('availabilityIntegration', availabilityFunction);
 
     api.addRoutes({
-      path: '/hello',
+      path: '/availability',
       methods: [HttpMethod.GET],
-      integration: helloInteg,
+      integration: availabilityInteg,
     })
     new cdk.CfnOutput(this, 'apiUrl', {
       description: 'The URL of the API Gateway',
