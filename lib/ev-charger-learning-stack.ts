@@ -1,4 +1,8 @@
+import { HttpApi } from 'aws-cdk-lib/aws-apigatewayv2';
+import { HttpLambdaIntegration } from 'aws-cdk-lib/aws-apigatewayv2-integrations';
+import { HttpMethod } from 'aws-cdk-lib/aws-events';
 import * as cdk from 'aws-cdk-lib/core';
+import { RustFunction } from 'cargo-lambda-cdk';
 import { Construct } from 'constructs';
 // import * as sqs from 'aws-cdk-lib/aws-sqs';
 
@@ -6,11 +10,23 @@ export class EvChargerLearningStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    // The code that defines your stack goes here
+    const helloRust = new RustFunction(this, 'helloRust', {
+      manifestPath: './lambda/helloRust',
+      runtime: 'provided.al2023',
+      timeout: cdk.Duration.seconds(30),
+    });
 
-    // example resource
-    // const queue = new sqs.Queue(this, 'EvChargerLearningQueue', {
-    //   visibilityTimeout: cdk.Duration.seconds(300)
-    // });
+    const api = new HttpApi(this, 'rustyApi');
+    const helloInteg = new HttpLambdaIntegration('helloInteg', helloRust);
+
+    api.addRoutes({
+      path: '/hello',
+      methods: [HttpMethod.GET],
+      integration: helloInteg,
+    })
+    new cdk.CfnOutput(this, 'apiUrl', {
+      description: 'The URL of the API Gateway',
+      value: `https://${api.apiId}.execute-api.${this.region}.amazonaws.com`,
+    })
   }
 }
