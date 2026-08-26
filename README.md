@@ -28,3 +28,6 @@ Alternatively, change to the Rust package directory first:
 cd lambda/availability
 cargo run --bin cli
 ```
+
+## Todo for next time
+2026-08-26: add the availability response in cli
