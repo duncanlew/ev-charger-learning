@@ -14,5 +14,17 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 * `npx cdk synth`   emits the synthesized CloudFormation template
 
 
-## Run the CLI app
-`cargo run --bin cli`
+## Run the Rust CLI
+
+From the repository root, run:
+
+```bash
+cargo run --manifest-path lambda/availability/Cargo.toml --bin cli
+```
+
+Alternatively, change to the Rust package directory first:
+
+```bash
+cd lambda/availability
+cargo run --bin cli
+```
