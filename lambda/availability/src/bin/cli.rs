@@ -1,3 +1,6 @@
+use availability::check_availability;
+
 fn main() {
-    println!("hello what am i doing here");
+    let result = check_availability();
+    println!("Output my result: {}", result);
 }
