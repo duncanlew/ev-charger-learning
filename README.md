@@ -31,3 +31,4 @@ cargo run --bin cli
 
 ## Todo for next time
 2026-08-26: add the availability response in cli
+2026-08-30: Use serde_json::to_string_pretty, and write some example tests
