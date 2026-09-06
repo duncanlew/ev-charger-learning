@@ -25,12 +25,12 @@ mod tests {
     }
 
     #[test]
-    fn serialize_to_json() {
+    fn serialize_to_expected_json() {
         let result = check_availability();
         let json = serde_json::to_string(&result).unwrap();
         assert_eq!(
             json,
-            "{\"available\":true,\"message\":\"Charger is mock available\"}"
+            r#"{"available":true,"message":"Charger is mock available"}"#
         );
     }
 }
