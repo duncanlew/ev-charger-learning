@@ -33,5 +33,9 @@ cargo run --bin cli
 2026-08-26: add the availability response in cli
 2026-08-30: Use serde_json::to_string_pretty, and write some example tests
 2026-08-31: Add another test, check the tutorials in Fable
-2026-09-14: - tests draaien
-            - lambda-invocation proberen te draaien
+2026-09-14: - ✅tests draaien
+            - ✅lambda-invocation proberen te draaien
+            Volgende keer
+            - Onderzoeken wat main.rs doet
+            - Wat is tokio
+            - Het plan van Claue bestuderen
