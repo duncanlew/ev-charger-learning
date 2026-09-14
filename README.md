@@ -12,3 +12,30 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 * `npx cdk deploy`  deploy this stack to your default AWS account/region
 * `npx cdk diff`    compare deployed stack with current state
 * `npx cdk synth`   emits the synthesized CloudFormation template
+
+
+## Run the Rust CLI
+
+From the repository root, run:
+
+```bash
+cargo run --manifest-path lambda/availability/Cargo.toml --bin cli
+```
+
+Alternatively, change to the Rust package directory first:
+
+```bash
+cd lambda/availability
+cargo run --bin cli
+```
+
+## Todo for next time
+2026-08-26: add the availability response in cli
+2026-08-30: Use serde_json::to_string_pretty, and write some example tests
+2026-08-31: Add another test, check the tutorials in Fable
+2026-09-14: - ✅tests draaien
+            - ✅lambda-invocation proberen te draaien
+            Volgende keer
+            - Onderzoeken wat main.rs doet
+            - Wat is tokio
+            - Het plan van Claue bestuderen

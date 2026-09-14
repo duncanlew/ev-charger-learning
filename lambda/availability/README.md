@@ -28,7 +28,7 @@ You can use the existent [event payloads](https://github.com/awslabs/aws-lambda-
 You can use those examples directly with the `--data-example` flag, where the value is the name of the file in the [lambda-events](https://github.com/awslabs/aws-lambda-rust-runtime/tree/main/lambda-events/src/fixtures) repository without the `example_` prefix and the `.json` extension.
 
 ```bash
-cargo lambda invoke --data-example apigw-request
+cargo lambda invoke availability --data-example apigw-request
 ```
 
 For generic events, where you define the event data structure, you can create a JSON file with the data you want to test with. For example:
